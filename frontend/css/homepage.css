@@ -1,0 +1,101 @@
+:root{
+    --click-colors: rgb(179, 123, 123);
+    --body-backgc: rgb(28, 28, 46);
+}
+
+
+/* ome part of the homepage */
+#homepage{
+    padding: 15px;
+    margin-top: 20px;
+}
+
+#notavailable
+{
+    color: var(--click-colors);
+}
+
+.note{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid grey;
+    box-shadow: 0 .5px 2px rgb(179, 123, 123);
+    border-radius: 15px;
+    padding: 3% 3% 3% 3%;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: whitesmoke;
+
+}
+
+.note:hover{
+    width: 72%;
+    margin: auto;
+    border-bottom: 1px solid grey;
+    box-shadow: 1px 1px 10px var(--click-colors);
+    padding: 3% 3% 3% 3%;
+
+}
+
+#register .submit{
+    color: rgb(112, 111, 111);
+    height: 20px;
+    width: 60px;
+}
+
+form{
+    height: 80%;
+    margin: auto;
+}
+
+/* New notes page */
+#navigator{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 85%;
+    margin: 10px auto;
+}
+
+textarea{
+    background-color: rgb(28, 28, 46);
+    height: 100%;
+    width: 95%;
+    border: 0;
+    font-size: large;
+    word-spacing: 10px;
+    resize: none;
+    color: var(--click-colors);
+    padding-left: 5%;
+}
+
+textarea:active,
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+textarea::-webkit-scrollbar {
+    display: none;
+  }
+
+#back-arrow{
+    cursor: pointer;
+    color: var(--click-colors);
+}
+
+#navigator button{
+    width: 15%;
+    color: var(--click-colors);
+    background-color: var(--body-backgc);
+    border: 0;
+    font-size: medium;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#addNotes, #detail{
+    height: 70vh;
+    padding-top: 20px;
+}
