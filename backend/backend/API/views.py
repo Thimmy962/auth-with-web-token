@@ -39,18 +39,15 @@ def Notes(request):
         return response.Response(status=status.HTTP_404_NOT_FOUND)
     #note_set is the default related name when no related name is provided
     if request.method == 'GET':
-        notes = user.note_set.all()
+        notes = user.note_set.all().order_by('-id')
         serializer = NoteSerializer(notes, many=True)
         return response.Response(serializer.data)
-    else:
-        note = Note(request.data)
-        note.owner = user
-        serializer = NoteSerializer(data=note)
-        if serializer.is_valid(raise_exception=True):
-            note.save()
-            return response.Response(status=status.HTTP_201_CREATED)
-        return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+    
+    elif request.method == 'POST':
+        body = request.data
+        note = Note.objects.create(body = body['body'], owner=user)
+        if note:
+            return response.Response("It worked", status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -80,9 +77,9 @@ def getNote(request, pk):
         serializer = NoteSerializer(note, data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return response.Response(serializer.data)
+            return response.Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return response.Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    
     elif request.method == 'DELETE':
         note.delete()
         return response.Response(status=status.HTTP_204_NO_CONTENT)

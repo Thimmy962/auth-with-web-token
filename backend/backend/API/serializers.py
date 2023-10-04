@@ -4,10 +4,13 @@ from django.db import IntegrityError
 
 
 class NoteSerializer(serializers.ModelSerializer):
+    # owner = serializers.PrimaryKeyRelatedField(many=True, queryset=User.objects.all())
     class Meta:
         model = Note
         fields = ['id', 'owner', 'body']
 
+        def perform_create(self, serializer):
+            serializer.save(owner=self.request.user)
 
 class Userserializer(serializers.ModelSerializer):
     class Meta:

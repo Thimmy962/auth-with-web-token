@@ -6,7 +6,11 @@ const Notes = ({notes}) => {
     <div id='note'>
         {notes.map(note=>(
             <Link to={`/detail/${note.id}`} key={note.id}>
-              <div className='note'>{note.body.slice(0,)+ '...'}</div>    
+              {/* 
+                if the body`s length is > 20 display the first 20 
+                char with 3 dots representing the remaining char else display all char 
+              */}
+              <div className='note'>{note.body.length > 20 ? note.body.slice(0,20)+ '...' : note.body}</div>    
             </Link>
         ))}
     </div>

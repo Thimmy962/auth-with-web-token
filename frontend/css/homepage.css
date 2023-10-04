@@ -4,7 +4,7 @@
 }
 
 
-/* ome part of the homepage */
+/* home part of the homepage */
 #homepage{
     padding: 15px;
     margin-top: 20px;
@@ -64,10 +64,11 @@ textarea{
     width: 95%;
     border: 0;
     font-size: large;
-    word-spacing: 10px;
+    word-spacing: 5px;
     resize: none;
     color: var(--click-colors);
     padding-left: 5%;
+    padding-top: 5%;
 }
 
 textarea:active,
